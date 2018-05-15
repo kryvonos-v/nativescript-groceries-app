@@ -1,0 +1,62 @@
+@import '~nativescript-theme-core/css/ruby.css';
+
+Page {
+  background-color: white;
+  font-size: 17;
+}
+
+TextField {
+  padding: 10 0;
+}
+
+Image {
+  margin-top: 20;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 80;
+}
+
+Button {
+  padding: 10;
+}
+
+.btn {
+  border-radius: 30;
+  padding: 14 15;
+  width: 100%;
+  font-size: 18;
+  font-weight: 700;
+  letter-spacing: 0.02;
+  background: #ff3761;
+  /* background-image: linear-gradient(to left, #ff3761, rgb(255, 89, 62)); */
+  color: #FFF;
+}
+
+.link {
+  font-size: 14;
+  font-weight: 500;
+  color: #8e8e8e;
+}
+
+.main-container {
+  padding: 20 30;
+}
+
+.l-control + .l-control {
+  margin-top: 10;
+}
+
+.l-btn + .l-btn {
+  margin-top: 10;
+}
+
+.l-brand-btn {
+  margin-top: 30;
+}
+
+.form-control {
+  border: 0;
+  border-bottom-width: 1;
+  border-bottom-color: #e8e8e8; /* #4f4d5e; */
+  font-size: 16;
+}

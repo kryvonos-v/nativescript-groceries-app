@@ -1,0 +1,29 @@
+<Page>
+  <ActionBar title="hello" class="action-bar" />
+  <StackLayout
+    orientation="vertical"
+    class="main-container"
+  >
+    <TextField
+      class="form-control l-control"
+      hint="Email"
+      keyboardType="email"
+      autocorrect="false"
+      autocapitalizationType="none"
+    />
+    <TextField
+      class="form-control l-control"
+      hint="Password"
+      secure="true"
+    />
+
+    <Button
+      class="btn l-brand-btn"
+      text="Sign in"
+    />
+    <Button
+      class="link"
+      text="Sign up for Groceries"
+    />
+  </StackLayout>
+</Page>
