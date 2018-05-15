@@ -1,9 +1,16 @@
-<Page>
-  <ActionBar title="hello" class="action-bar" />
+<Page class="p-login">
+  <ActionBar title="Log in" class="action-bar" />
   <StackLayout
     orientation="vertical"
     class="main-container"
   >
+    <Image
+      class="p-login__logo"
+      src="res://logo"
+      stretch="none"
+      horizontalAlignment="center"
+    />
+
     <TextField
       class="form-control l-control"
       hint="Email"
