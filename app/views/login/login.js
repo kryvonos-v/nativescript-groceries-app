@@ -5,8 +5,14 @@ const dialogs = require('ui/dialogs')
 const Observable = require('data/observable')
 const UserViewModel = require('../../shared/view-models/user-view-model')
 
+const DUMMY_EMAIL = 'vova@gm.com'
+const DUMMY_PASSWORD = '123'
+
 let page = null
-let user = new UserViewModel()
+let user = new UserViewModel({
+  email: DUMMY_EMAIL,
+  password: DUMMY_PASSWORD
+})
 
 exports.pageLoaded = function (args) {
   page = args.object
@@ -26,7 +32,10 @@ exports.signIn = async function () {
   // TEMPORARY: API which is used in Groceries store,
   // currently doesn't work. That's why we will put here
   // dummy data for sign in.
-  if (user.email === 'vova@gm.com' && user.password === '123') {
+  if (
+    user.email === DUMMY_EMAIL &&
+    user.password === DUMMY_PASSWORD
+  ) {
     frame.topmost().navigate('views/list/list')
   }
 }
