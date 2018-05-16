@@ -6,8 +6,6 @@ function GroceryListViewModel(items) {
     var baseUrl = config.apiUrl + "appdata/" + config.appKey + "/Groceries";
     var viewModel = new ObservableArray(items);
 
-
-
     return viewModel;
 }
 
