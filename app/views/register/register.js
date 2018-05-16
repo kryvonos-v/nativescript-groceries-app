@@ -4,7 +4,7 @@ var frameModule = require("ui/frame");
 var UserViewModel = require("../../shared/view-models/user-view-model");
 var user = new UserViewModel();
 
-exports.loaded = function(args) {
+exports.pageLoaded = function(args) {
     var page = args.object;
     page.bindingContext = user;
 };

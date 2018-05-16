@@ -1,11 +1,15 @@
 <Page class="p-login" loaded="pageLoaded">
-  <ActionBar title="Log in" class="action-bar" />
+  <ActionBar
+    title="Log in"
+    class="action-bar"
+  />
+  
   <StackLayout
     orientation="vertical"
     class="main-container"
   >
     <Image
-      class="p-login__logo"
+      class="l-logo-start-screen"
       src="res://logo"
       stretch="none"
       horizontalAlignment="center"

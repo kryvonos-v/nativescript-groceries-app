@@ -47,6 +47,11 @@ Button {
   margin-top: 30;
 }
 
+.l-logo-start-screen {
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
 .form-control {
   border: 0;
   border-bottom-width: 1;
