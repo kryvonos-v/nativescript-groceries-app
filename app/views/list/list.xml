@@ -1,4 +1,4 @@
-<Page>
+<Page loaded="pageLoaded">
   <GridLayout>
     <ListView items="{{ groceryList }}">
       <ListView.itemTemplate>
