@@ -1,11 +1,9 @@
 const frame = require('ui/frame')
 const Observable = require('data/observable')
+const UserViewModel = require('../../shared/view-models/user-view-model')
 
 let page = null
-let user = new Observable.fromObject({
-  email: '',
-  password: ''
-})
+let user = new UserViewModel()
 
 exports.pageLoaded = function (args) {
   page = args.object
@@ -13,7 +11,7 @@ exports.pageLoaded = function (args) {
 }
 
 exports.signIn = function () {
-  alert('Email: ' + user.email)
+  user.login()
 }
 
 exports.register = function () {
