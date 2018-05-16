@@ -1,4 +1,7 @@
+const catchify = require('catchify')
+
 const frame = require('ui/frame')
+const dialogs = require('ui/dialogs')
 const Observable = require('data/observable')
 const UserViewModel = require('../../shared/view-models/user-view-model')
 
@@ -10,8 +13,22 @@ exports.pageLoaded = function (args) {
   page.bindingContext = user
 }
 
-exports.signIn = function () {
-  user.login()
+exports.signIn = async function () {
+  const [error, data] = await catchify(user.login())
+
+  if (error || data.error) {
+    await alert({
+      message: 'Wrong email or password.',
+      okButtonText: 'OK'
+    })
+  }
+
+  // TEMPORARY: API which is used in Groceries store,
+  // currently doesn't work. That's why we will put here
+  // dummy data for sign in.
+  if (user.email === 'vova@gm.com' && user.password === '123') {
+    frame.topmost().navigate('views/list/list')
+  }
 }
 
 exports.register = function () {
