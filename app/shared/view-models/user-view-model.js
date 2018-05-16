@@ -2,11 +2,14 @@ var config = require('../../shared/config')
 var observable = require('data/observable')
 
 class User extends observable.Observable {
-  constructor ({ email = '', message = '' } = {}) {
+  constructor ({
+    email = '',
+    password = ''
+  }) {
     super()
-
+    
     this.email = email
-    this.message = message
+    this.password = password
   }
 
   register () {
