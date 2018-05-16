@@ -1,11 +1,19 @@
 const frame = require('ui/frame')
+const Observable = require('data/observable')
 
-exports.pageLoaded = function () {
-  console.log('Login page is loaded.')
+let page = null
+let user = new Observable.fromObject({
+  email: '',
+  password: ''
+})
+
+exports.pageLoaded = function (args) {
+  page = args.object
+  page.bindingContext = user
 }
 
 exports.signIn = function () {
-  alert('Signing in')
+  alert('Email: ' + user.email)
 }
 
 exports.register = function () {

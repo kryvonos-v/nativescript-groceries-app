@@ -16,7 +16,9 @@
     />
 
     <TextField
+      id="email"
       class="form-control l-control"
+      text="{{ email }}"
       hint="Email"
       keyboardType="email"
       autocorrect="false"
@@ -24,6 +26,7 @@
     />
     <TextField
       class="form-control l-control"
+      text="{{ password }}"
       hint="Password"
       secure="true"
     />
