@@ -5,21 +5,20 @@ const GroceryListViewModel = require('../../shared/view-models/grocery-list-view
 
 let page = null
 
-const groceryListVm = new GroceryListViewModel([
-  { id: 1, name: 'bread' },
-  { id: 2, name: 'milk' },
-  { id: 3, name: 'wine' },
-  { id: 4, name: 'grapes' },
-  { id: 5, name: 'olives' }
-])
+const groceryListVm = new GroceryListViewModel()
 const vm = observable.fromObject({
   groceryList: groceryListVm,
-  groceryName: ''
+  groceryName: '',
+  loading: true
 })
 
-exports.pageLoaded = function (args) {
+exports.pageLoaded = async function (args) {
   page = args.object
   page.bindingContext = vm
+
+  groceryListVm.empty()
+  await groceryListVm.load()
+  vm.loading = false
 }
 
 exports.add = async function () {
