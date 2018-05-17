@@ -16,9 +16,16 @@ exports.pageLoaded = async function (args) {
   page = args.object
   page.bindingContext = vm
 
+  const groceryListView = page.getViewById('groceryList')
+
   groceryListVm.empty()
   await groceryListVm.load()
   vm.loading = false
+
+  groceryListView.animate({
+    opacity: 1,
+    duration: 400
+  })
 }
 
 exports.add = async function () {

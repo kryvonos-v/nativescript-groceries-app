@@ -1,16 +1,20 @@
 ListView {
-    margin: 5;
+  margin: 5;
 }
-Label {
-    margin: 10;
-    horizontal-align: left;
-    vertical-align: center;
+label {
+  margin: 10;
+  horizontal-align: left;
+  vertical-align: center;
 }
 TextField {
-    border-width: 5;
-    border-style: solid;
-    border-color: #034793;
+  border-width: 5;
+  border-style: solid;
+  border-color: #034793;
 }
-Image {
-    margin: 10;
+image {
+  margin: 10;
+}
+
+.p-grocery-list__list {
+  opacity: 0;
 }

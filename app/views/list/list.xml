@@ -1,4 +1,7 @@
-<Page loaded="pageLoaded">
+<Page
+  class="p-grocery-list"
+  loaded="pageLoaded"
+>
   <GridLayout rows="auto, *" columns="2*, *">
     <TextField
       id="groceryInput"
@@ -15,6 +18,8 @@
     />
 
     <ListView
+      id="groceryList"
+      class="p-grocery-list__list"
       items="{{ groceryList }}"
       row="1"
       colSpan="2"
