@@ -27,5 +27,11 @@
         />
       </ListView.itemTemplate>
     </ListView>
+
+    <ActivityIndicator
+      busy="{{ loading }}"
+      rowSpan="2"
+      colSpan="2"
+    />
   </GridLayout>
 </Page>
