@@ -6,8 +6,11 @@ const GroceryListViewModel = require('../../shared/view-models/grocery-list-view
 let page = null
 
 const groceryListVm = new GroceryListViewModel([
-  { name: 'bread' },
-  { name: 'milk' }
+  { id: 1, name: 'bread' },
+  { id: 2, name: 'milk' },
+  { id: 3, name: 'wine' },
+  { id: 4, name: 'grapes' },
+  { id: 5, name: 'olives' }
 ])
 const vm = observable.fromObject({
   groceryList: groceryListVm,
