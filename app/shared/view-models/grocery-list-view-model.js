@@ -13,7 +13,7 @@ class GroceryListViewModel extends ObservableArray {
     this.length = 0
   }
 
-  load () {
+  async load () {
     fetch(BASE_URL, {
       headers: getCommonHeaders()
     })
@@ -25,6 +25,10 @@ class GroceryListViewModel extends ObservableArray {
           name: grocery.Name
         }))
       })
+  }
+
+  add (groceryName) {
+    return Promise.resolve()
   }
 }
 

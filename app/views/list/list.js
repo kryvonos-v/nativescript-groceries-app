@@ -1,3 +1,4 @@
+const catchify = require('catchify')
 const dialogs = require('ui/dialogs')
 const observable = require('data/observable')
 const GroceryListViewModel = require('../../shared/view-models/grocery-list-view-model')
@@ -20,9 +21,22 @@ exports.pageLoaded = function (args) {
 
 exports.add = async function () {
   if (vm.groceryName.trim() === '') {
-    await dialogs.alert({
+    return await dialogs.alert({
       message: 'Input grocery name',
       okButtonText: 'OK'
     })
+  }
+
+  page.getViewById('groceryInput').dismissSoftInput()
+
+  const [error] = await catchify(groceryListVm.add(vm.groceryName))
+
+  if (error) {
+    await dialogs.alert({
+      message: 'An error occurred while adding an item to your list.',
+      okButtonText: 'OK'
+    })
+  } else {
+    vm.groceryName = ''
   }
 }

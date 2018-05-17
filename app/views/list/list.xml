@@ -1,6 +1,7 @@
 <Page loaded="pageLoaded">
   <GridLayout rows="auto, *" columns="2*, *">
     <TextField
+      id="groceryInput"
       text="{{ groceryName }}"
       hint="Entery a grocery name"
       row="0"
