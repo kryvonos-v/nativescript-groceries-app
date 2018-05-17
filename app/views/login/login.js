@@ -20,24 +20,24 @@ exports.pageLoaded = function (args) {
 }
 
 exports.signIn = async function () {
-  const [error, data] = await catchify(user.login())
-
-  if (error || data.error) {
-    await alert({
-      message: 'Wrong email or password.',
-      okButtonText: 'OK'
-    })
-  }
-
   // TEMPORARY: API which is used in Groceries store,
   // currently doesn't work. That's why we will put here
   // dummy data for sign in.
   if (
-    user.email === DUMMY_EMAIL &&
-    user.password === DUMMY_PASSWORD
+    user.email !== DUMMY_EMAIL &&
+    user.password !== DUMMY_PASSWORD
   ) {
-    frame.topmost().navigate('views/list/list')
+    const [error, data] = await catchify(user.login())
+
+    if (error || data.error) {
+      return await alert({
+        message: 'Wrong email or password.',
+        okButtonText: 'OK'
+      })
+    }
   }
+
+  frame.topmost().navigate('views/list/list')
 }
 
 exports.register = function () {
