@@ -31,6 +31,7 @@ exports.add = async function () {
 
   const [error] = await catchify(groceryListVm.add(vm.groceryName))
 
+  console.log('error', error)
   if (error) {
     await dialogs.alert({
       message: 'An error occurred while adding an item to your list.',
