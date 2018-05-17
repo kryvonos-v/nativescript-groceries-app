@@ -17,7 +17,7 @@ class GroceryListViewModel extends ObservableArray {
   }
 
   async load () {
-    fetch(GROCERIES_URL, {
+    return fetch(GROCERIES_URL, {
       headers: getCommonHeaders()
     })
       .then(handleErrors)
