@@ -1,7 +1,9 @@
-var config = require('../../shared/config')
-var catchify = require('catchify')
-var fetchModule = require('fetch')
-var ObservableArray = require('data/observable-array').ObservableArray
+const catchify = require('catchify')
+const fetchModule = require('fetch')
+const ObservableArray = require('data/observable-array').ObservableArray
+
+const config = require('../../shared/config')
+const sleep = require('../../shared/utils').sleep
 
 const GROCERIES_URL = config.apiUrl + 'appdata/' + config.appKey + '/Groceries'
 
@@ -18,12 +20,30 @@ class GroceryListViewModel extends ObservableArray {
     fetch(GROCERIES_URL, {
       headers: getCommonHeaders()
     })
-      .then(response => response.json())
       .then(handleErrors)
+      .then(response => response.json())
+      // TEMPORARY: API which is used in Groceries store, currently doesn't work.
+      // That's why we will ignore wrong credentials error and return dummy data.
+      .catch(async (error) => {
+        if (error.message === 'Unauthorized') {
+          // Using delay for simulating API response.
+          await sleep(500)
+
+          return [
+            { _id: 1, Name: 'bread' },
+            { _id: 2, Name: 'milk' },
+            { _id: 3, Name: 'wine' },
+            { _id: 4, Name: 'grapes' },
+            { _id: 5, Name: 'olives' }
+          ]
+        }
+
+        throw error
+      })
       .then(groceries => {
         groceries.forEach(item => this.push({
           id: item._id,
-          name: grocery.Name
+          name: item.Name
         }))
       })
   }
@@ -39,7 +59,7 @@ class GroceryListViewModel extends ObservableArray {
       .then(handleErrors)
       .then(reponse => response.json())
       // TEMPORARY: API which is used in Groceries store, currently doesn't work.
-      // That's why we will ignore wrong credentials error.
+      // That's why we will ignore wrong credentials error and return dummy data.
       .catch(error => {
         if (error.message === 'Unauthorized') {
           const randomId = Math.round(Math.random() * 10000)
