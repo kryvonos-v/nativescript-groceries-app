@@ -1,3 +1,4 @@
+const dialogs = require('ui/dialogs')
 const observable = require('data/observable')
 const GroceryListViewModel = require('../../shared/view-models/grocery-list-view-model')
 
@@ -8,12 +9,20 @@ const groceryListVm = new GroceryListViewModel([
   { name: 'milk' }
 ])
 const vm = observable.fromObject({
-  groceryList: groceryListVm 
+  groceryList: groceryListVm,
+  groceryName: ''
 })
-
-groceryListVm.empty()
 
 exports.pageLoaded = function (args) {
   page = args.object
   page.bindingContext = vm
+}
+
+exports.add = async function () {
+  if (vm.groceryName.trim() === '') {
+    await dialogs.alert({
+      message: 'Input grocery name',
+      okButtonText: 'OK'
+    })
+  }
 }

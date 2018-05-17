@@ -1,6 +1,23 @@
 <Page loaded="pageLoaded">
-  <GridLayout>
-    <ListView items="{{ groceryList }}">
+  <GridLayout rows="auto, *" columns="2*, *">
+    <TextField
+      text="{{ groceryName }}"
+      hint="Entery a grocery name"
+      row="0"
+      col="0"
+    />
+    <Button
+      text="Add"
+      row="0"
+      col="1"
+      tap="add"
+    />
+
+    <ListView
+      items="{{ groceryList }}"
+      row="1"
+      colSpan="2"
+    >
       <ListView.itemTemplate>
         <Label
           text="{{ name }}"
