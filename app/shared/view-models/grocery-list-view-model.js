@@ -8,6 +8,24 @@ class GroceryListViewModel extends ObservableArray {
   constructor (items = []) {
     super(items)
   }
+
+  empty () {
+    this.length = 0
+  }
+
+  load () {
+    fetch(BASE_URL, {
+      headers: getCommonHeaders()
+    })
+      .then(response => response.json())
+      .then(handleErrors)
+      .then(groceries => {
+        groceries.forEach(item => ({
+          id: item._id,
+          name: grocery.Name
+        }))
+      })
+  }
 }
 
 function getCommonHeaders () {
