@@ -1,32 +1,31 @@
-var dialogsModule = require("ui/dialogs");
-var frameModule = require("ui/frame");
+const catchify = require('catchifys')
+const dialogsModule = require('ui/dialogs')
+const frameModule = require('ui/frame')
 
-var UserViewModel = require("../../shared/view-models/user-view-model");
-var user = new UserViewModel();
+const UserViewModel = require('../../shared/view-models/user-view-model')
+const user = new UserViewModel()
 
-exports.pageLoaded = function(args) {
-    var page = args.object;
-    page.bindingContext = user;
-};
-
-function completeRegistration() {
-    user.register()
-        .then(function() {
-            dialogsModule
-                .alert("Your account was successfully created.")
-                .then(function() {
-                    frameModule.topmost().navigate("views/login/login");
-                });
-        }).catch(function(error) {
-            console.log(error);
-            dialogsModule
-                .alert({
-                    message: "Unfortunately we were unable to create your account.",
-                    okButtonText: "OK"
-                });
-        });
+exports.pageLoaded = function (args) {
+  const page = args.object
+  page.bindingContext = user
 }
 
-exports.register = function() {
-    completeRegistration();
-};
+async function completeRegistration () {
+  const [error] = await user.register()
+
+  if (error) {
+    console.log(error)
+
+    return await dialogsModule.alert({
+      message: 'Unfortunately we were unable to create your account.',
+      okButtonText: 'OK'
+    })
+  }
+
+  await dialogsModule.alert('Your account was successfully created.')
+  frameModule.topmost().navigate('views/login/login')
+}
+
+exports.register = function () {
+  completeRegistration()
+}
