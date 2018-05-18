@@ -1,11 +1,12 @@
-var config = require('../../shared/config')
-var observable = require('data/observable')
+const config = require('../../shared/config')
+const observable = require('data/observable')
+const validateEmail = require('email-validator').validate
 
 class User extends observable.Observable {
   constructor ({
     email = '',
     password = ''
-  }) {
+  } = {}) {
     super()
     
     this.email = email
@@ -36,6 +37,10 @@ class User extends observable.Observable {
     })
     .then(response => response.json())
     .catch(handleErrors)
+  }
+
+  isValidEmail () {
+    return validateEmail(this.email)
   }
 }
 

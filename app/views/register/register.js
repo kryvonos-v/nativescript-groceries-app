@@ -1,31 +1,38 @@
-const catchify = require('catchifys')
-const dialogsModule = require('ui/dialogs')
+const catchify = require('catchify')
+const dialogAlert = require('ui/dialogs').alert
 const frameModule = require('ui/frame')
 
 const UserViewModel = require('../../shared/view-models/user-view-model')
-const user = new UserViewModel()
+const userVm = new UserViewModel()
 
 exports.pageLoaded = function (args) {
   const page = args.object
-  page.bindingContext = user
+  page.bindingContext = userVm
 }
 
 async function completeRegistration () {
-  const [error] = await user.register()
+  const [error] = await catchify(userVm.register())
 
   if (error) {
     console.log(error)
 
-    return await dialogsModule.alert({
+    return await dialogAlert({
       message: 'Unfortunately we were unable to create your account.',
       okButtonText: 'OK'
     })
   }
 
-  await dialogsModule.alert('Your account was successfully created.')
+  await dialogAlert('Your account was successfully created.')
   frameModule.topmost().navigate('views/login/login')
 }
 
-exports.register = function () {
-  completeRegistration()
+exports.register = async function () {
+  if (userVm.isValidEmail()) {
+    completeRegistration()
+  } else {
+    await dialogAlert({
+      message: 'Enter a valid email address.',
+      okButtonText: 'OK'
+    })
+  }
 }
