@@ -1,3 +1,4 @@
+const socialShare = require('nativescript-social-share')
 const catchify = require('catchify')
 const dialogs = require('ui/dialogs')
 const ListView = require('ui/list-view').ListView
@@ -27,10 +28,6 @@ exports.pageLoaded = async function (args) {
     opacity: 1,
     duration: 400
   })
-
-  // groceryListView.on(ListView.itemLoadingEvent, args => {
-  //   args.ios.separatorInset = UIEdgeInsetsZero
-  // })
 }
 
 exports.add = async function () {
@@ -53,4 +50,10 @@ exports.add = async function () {
   } else {
     vm.groceryName = ''
   }
+}
+
+exports.share = function () {
+  const list = groceryListVm.map(item => item.name)
+
+  socialShare.shareText(list.join(', '))
 }

@@ -2,6 +2,18 @@
   class="p-grocery-list"
   loaded="pageLoaded"
 >
+  <Page.actionBar>
+    <ActionBar title="Groceries">
+      <ActionBar.actionItems>
+        <ActionItem
+          text="Share"
+          ios.position="right"
+          tap="share"
+        />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+
   <GridLayout
     rows="auto, *"
     columns="*"
