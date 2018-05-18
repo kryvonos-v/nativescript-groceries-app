@@ -23,6 +23,7 @@
       <Button
         row="0"
         col="1"
+        class="l-add-btn"
         text="Add"
         tap="add"
         textWrap="true"

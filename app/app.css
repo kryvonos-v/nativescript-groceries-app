@@ -57,6 +57,10 @@ Button {
   padding: 10 15;
 }
 
+.l-add-btn {
+  margin-left: 5;
+}
+
 .l-container--horizontal {
   padding-left: 15;
   padding-right: 15;
