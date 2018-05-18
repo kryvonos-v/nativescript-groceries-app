@@ -2,6 +2,12 @@
   class="p-register"
   loaded="pageLoaded"
 >
+  <Page.actionBar>
+    <ActionBar
+      class="action-bar"
+      title="Sign up"
+    />
+  </Page.actionBar>
   <StackLayout class="main-container">
     <Image
       class="logo l-logo-start-screen"

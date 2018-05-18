@@ -1,8 +1,10 @@
 <Page class="p-login" loaded="pageLoaded">
-  <ActionBar
-    title="Log in"
-    class="action-bar"
-  />
+  <Page.actionBar>
+    <ActionBar
+      title="Sign in"
+      class="action-bar"
+    />
+  </Page.actionBar>
   
   <StackLayout
     orientation="vertical"
