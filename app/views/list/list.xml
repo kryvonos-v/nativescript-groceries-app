@@ -54,15 +54,18 @@
       separatorColor="transparent"
     >
       <ListView.itemTemplate>
-        <StackLayout
+        <GridLayout
           class="l-container--horizontal u-separator--bottom"
+          columns="*, auto"
         >
-          <Label
-            text="{{ name }}"
-            horizontalAlignment="left"
-            verticalAlignment="center"
+          <Label text="{{ name }}" />
+          <Image
+            col="1"
+            src="res://ic_menu_delete"
+            ios:visibility="collapsed"
+            tap="delete"
           />
-        </StackLayout>
+        </GridLayout>
       </ListView.itemTemplate>
     </ListView>
 

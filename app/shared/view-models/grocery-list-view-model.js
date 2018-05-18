@@ -76,6 +76,30 @@ class GroceryListViewModel extends ObservableArray {
         })
       })
   }
+
+  async delete (id) {
+    // We need to invoke slice method to get original
+    // JavaScript array which has find method.
+    const indexOf = this.slice().findIndex(item => item.id === id)
+
+    if (indexOf === -1) return
+
+    return fetch(GROCERIES_URL + '/' + id, {
+      method: 'DELETE',
+      headers: getCommonHeaders()
+    })
+      .then(handleErrors)
+      // TEMPORARY: API which is used in Groceries store, currently doesn't work.
+      // That's why we will ignore wrong credentials error and procced to next handler.
+      .catch(error => {
+        if (error.message === 'Unauthorized') return 
+
+        throw error
+      })
+      .then(() => {
+        this.splice(indexOf, 1)
+      })
+  }
 }
 
 function getCommonHeaders () {

@@ -52,6 +52,16 @@ exports.add = async function () {
   }
 }
 
+exports.delete = async function (args) {
+  const item = args.view.bindingContext
+
+  if (!item) return
+
+  vm.loading = true
+  await groceryListVm.delete(item.id)
+  vm.loading = false
+}
+
 exports.share = function () {
   const list = groceryListVm.map(item => item.name)
 
