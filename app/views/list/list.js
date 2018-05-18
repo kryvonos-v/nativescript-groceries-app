@@ -23,7 +23,7 @@ exports.pageLoaded = async function (args) {
 
   if (page.ios) {
     swipeDelete.enable(groceryListView, index => 
-      groceryListVm.delete(index)
+      deleteGroceryItemByIndex(index)
     )
   }
 
@@ -59,14 +59,19 @@ exports.add = async function () {
   }
 }
 
+async function deleteGroceryItemByIndex (index) {
+  vm.loading = true
+  await groceryListVm.delete(index)
+  vm.loading = false
+}
+
 exports.delete = async function (args) {
   const item = args.view.bindingContext
+  const itemIndex = groceryListVm.indexOf(item)
 
-  if (!item) return
+  if (itemIndex === -1) return
 
-  vm.loading = true
-  await groceryListVm.deleteById(item.id)
-  vm.loading = false
+  deleteGroceryItemByIndex(itemIndex)
 }
 
 exports.share = function () {
