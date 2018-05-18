@@ -1,5 +1,6 @@
 const catchify = require('catchify')
 const dialogs = require('ui/dialogs')
+const ListView = require('ui/list-view').ListView
 const observable = require('data/observable')
 const GroceryListViewModel = require('../../shared/view-models/grocery-list-view-model')
 
@@ -26,6 +27,10 @@ exports.pageLoaded = async function (args) {
     opacity: 1,
     duration: 400
   })
+
+  // groceryListView.on(ListView.itemLoadingEvent, args => {
+  //   args.ios.separatorInset = UIEdgeInsetsZero
+  // })
 }
 
 exports.add = async function () {

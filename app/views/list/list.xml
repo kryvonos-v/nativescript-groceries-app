@@ -2,7 +2,11 @@
   class="p-grocery-list"
   loaded="pageLoaded"
 >
-  <GridLayout rows="auto, *" columns="2*, *">
+  <GridLayout
+    class="l-container"
+    rows="auto, *"
+    columns="*, auto"
+  >
     <TextField
       id="groceryInput"
       text="{{ groceryName }}"
@@ -23,13 +27,16 @@
       items="{{ groceryList }}"
       row="1"
       colSpan="2"
+      separatorColor="transparent"
     >
       <ListView.itemTemplate>
-        <Label
-          text="{{ name }}"
-          horizontalAlignment="left"
-          verticalAlignment="center"
-        />
+        <StackLayout class="u-separator--bottom">
+          <Label
+            text="{{ name }}"
+            horizontalAlignment="left"
+            verticalAlignment="center"
+          />
+        </StackLayout>
       </ListView.itemTemplate>
     </ListView>
 

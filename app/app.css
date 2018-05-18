@@ -9,6 +9,11 @@ TextField {
   padding: 10 0;
 }
 
+ListView {
+  margin: 0;
+  padding: 0;
+}
+
 Button {
   padding: 10;
 }
@@ -33,6 +38,27 @@ Button {
 
 .main-container {
   padding: 20 30;
+}
+
+.o-separator {
+  margin: 0;
+  padding: 0;
+  height: 1;
+  width: 100%;
+  background-color: #E2E6EB;
+}
+
+.u-separator--bottom {
+  border-bottom-width: 1;
+  border-bottom-color: #E2E6EB;
+}
+
+.l-container {
+  padding: 10 15;
+}
+
+.l-container--no-top {
+  padding-top: 0;
 }
 
 .l-control + .l-control {
