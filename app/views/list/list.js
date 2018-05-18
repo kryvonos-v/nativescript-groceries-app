@@ -3,6 +3,7 @@ const catchify = require('catchify')
 const dialogs = require('ui/dialogs')
 const ListView = require('ui/list-view').ListView
 const observable = require('data/observable')
+const swipeDelete = require("../../shared/utils/ios-swipe-delete")
 const GroceryListViewModel = require('../../shared/view-models/grocery-list-view-model')
 
 let page = null
@@ -19,6 +20,12 @@ exports.pageLoaded = async function (args) {
   page.bindingContext = vm
 
   const groceryListView = page.getViewById('groceryList')
+
+  if (page.ios) {
+    swipeDelete.enable(groceryListView, index => 
+      groceryListVm.delete(index)
+    )
+  }
 
   groceryListVm.empty()
   await groceryListVm.load()
@@ -58,7 +65,7 @@ exports.delete = async function (args) {
   if (!item) return
 
   vm.loading = true
-  await groceryListVm.delete(item.id)
+  await groceryListVm.deleteById(item.id)
   vm.loading = false
 }
 

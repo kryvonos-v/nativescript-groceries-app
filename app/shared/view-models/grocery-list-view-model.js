@@ -77,14 +77,12 @@ class GroceryListViewModel extends ObservableArray {
       })
   }
 
-  async delete (id) {
-    // We need to invoke slice method to get original
-    // JavaScript array which has find method.
-    const indexOf = this.slice().findIndex(item => item.id === id)
+  async delete (index) {
+    if (index < 0 || index >= this.length) return
 
-    if (indexOf === -1) return
+    const groceryItem = this.getItem(index)
 
-    return fetch(GROCERIES_URL + '/' + id, {
+    return fetch(GROCERIES_URL + '/' + groceryItem.id, {
       method: 'DELETE',
       headers: getCommonHeaders()
     })
@@ -97,8 +95,16 @@ class GroceryListViewModel extends ObservableArray {
         throw error
       })
       .then(() => {
-        this.splice(indexOf, 1)
+        this.splice(index, 1)
       })
+  }
+
+  async deleteById (id) {
+    // We need to invoke slice method to get original
+    // JavaScript array which has find method.
+    const indexOf = this.slice().findIndex(item => item.id === id)
+
+    return await this.delete(indexOf)
   }
 }
 
