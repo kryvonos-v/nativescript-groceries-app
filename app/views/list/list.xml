@@ -3,34 +3,44 @@
   loaded="pageLoaded"
 >
   <GridLayout
-    class="l-container"
     rows="auto, *"
-    columns="*, auto"
+    columns="*"
   >
-    <TextField
-      id="groceryInput"
-      text="{{ groceryName }}"
-      hint="Entery a grocery name"
+    <GridLayout
       row="0"
       col="0"
-    />
-    <Button
-      text="Add"
-      row="0"
-      col="1"
-      tap="add"
-    />
+      rows="*"
+      columns="*, auto"
+      class="l-container u-separator--bottom"
+    >
+      <TextField
+        row="0"
+        col="0"
+        id="groceryInput"
+        text="{{ groceryName }}"
+        hint="Entery a grocery name"
+      />
+      <Button
+        row="0"
+        col="1"
+        text="Add"
+        tap="add"
+        textWrap="true"
+      />
+    </GridLayout>
 
     <ListView
+      row="1"
+      col="0"
       id="groceryList"
       class="p-grocery-list__list"
       items="{{ groceryList }}"
-      row="1"
-      colSpan="2"
       separatorColor="transparent"
     >
       <ListView.itemTemplate>
-        <StackLayout class="u-separator--bottom">
+        <StackLayout
+          class="l-container--horizontal u-separator--bottom"
+        >
           <Label
             text="{{ name }}"
             horizontalAlignment="left"
@@ -43,7 +53,7 @@
     <ActivityIndicator
       busy="{{ loading }}"
       rowSpan="2"
-      colSpan="2"
+      colSpan="1"
     />
   </GridLayout>
 </Page>
