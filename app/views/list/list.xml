@@ -3,7 +3,10 @@
   loaded="pageLoaded"
 >
   <Page.actionBar>
-    <ActionBar title="Groceries">
+    <ActionBar
+      class="action-bar"
+      title="Groceries"
+    >
       <ActionBar.actionItems>
         <ActionItem
           text="Share"
