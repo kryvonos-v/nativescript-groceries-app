@@ -30,6 +30,10 @@ Button {
   color: #FFF;
 }
 
+.secondary-btn {
+  color: #ff3761;
+}
+
 .link {
   font-size: 14;
   font-weight: 500;
